@@ -1,0 +1,19 @@
+Task 0
+Task 0 time complexity is O(1) because we have the indexes of the items we want to access and so this is done in constant time
+
+Task 1
+If length of calls is n and length of texts is m then time complexity = O(n + m)
+
+
+Task 2
+for length of calls = n :
+O(n)
+
+
+Task 3
+O(n)
+
+
+Task 4
+
+O(n)

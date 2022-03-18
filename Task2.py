@@ -19,14 +19,25 @@ Print a message:
 "<telephone number> spent the longest time, <total time> seconds, on the phone during 
 September 2016.".
 """
-call_time = []
-highest_time = 0
-caller = ""
+incoming_calls = []
+outgoing_calls = []
+calls_dict = {}
 for i in range(len(calls)):
-    if int(calls[i][3]) > highest_time:
-        highest_time = int(calls[i][3])
-        caller = calls[i][1]
+    if calls[i][0] in calls_dict:
+        calls_dict[calls[i][0]] += int(calls[i][3])
+    elif calls[i][1] in calls_dict:
+        calls_dict[calls[i][1]] += int(calls[i][3])
+    elif calls[i][0] not in calls_dict:
+        calls_dict[calls[i][0]] = int(calls[i][3])
+    elif calls[i][1] not in calls_dict:
+        calls_dict[calls[i][1]] = int(calls[i][3])
+
+max_value = max(calls_dict, key=calls_dict.get)
+
+print(len(calls_dict))
+print(max_value, calls_dict[max_value])
 
 
 
-print(caller + " spent the longest time, " + str(highest_time)  + " seconds on the phone during September 2016.")    
+
+print(max_value + " spent the longest time, " + str(calls_dict[max_value])  + " seconds on the phone during September 2016.")    

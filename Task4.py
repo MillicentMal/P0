@@ -24,8 +24,20 @@ Print a message:
 <list of numbers>
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
+incoming_calls = []
+outgoing_calls = []
+outgoing_texts = []
+incoming_texts = []
+for i in range(len(calls)):
+    outgoing_calls.append(calls[i][0])
+    incoming_calls.append(calls[i][1])
+for i in range(len(texts)):
+    outgoing_texts.append(texts[i][0])
+    incoming_texts.append(texts[i][1])
+    
+all_numbers = incoming_calls + outgoing_calls + outgoing_texts + incoming_texts
+different_numbers = set(all_numbers)
 
-from Task1 import different_numbers, outgoing_calls, incoming_calls, incoming_texts, outgoing_texts
 telemarketers = []
 texting_numbers = incoming_texts + outgoing_texts
 for i in different_numbers:

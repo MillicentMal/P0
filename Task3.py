@@ -29,6 +29,11 @@ to the following area codes and mobile prefixes:
  - Telemarketers' numbers have no parentheses or space, but they start
    with the area code 140.
 
+
+
+
+
+
 Print the answer as part of a message:
 "The numbers called by people in Bangalore have codes:"
  <list of codes>
@@ -44,6 +49,33 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+# PART A
+from_bangalore = []
+
+area_code = []
+for i in range(len(calls)):
+  if calls[i][0][:5] == "(080)":
+    from_bangalore.append(calls[i][0])
+    if calls[i][1][0] == "(":
+      area_code.append(calls[i][1][:calls[i][1].index(')') + 1])
+    elif calls[i][1][0] in ['7', '8', '9']:
+      area_code.append(calls[i][1][:4])
+    elif calls[i][1][:3] == "140":
+      area_code.append("140")  # Not seeing telemarketers code in the set. Most probably because they do not receive calls
+
+print("The numbers called by people in Bangalore have codes: ")
+print(set(area_code))
+# print(set(area_code))
 
 
+# PART B
+bangalore_to_bangalore = []
+for i in range(len(calls)):
+  if calls[i][0][:5] == "(080)" and calls[i][1][:5] == "(080)":
+    bangalore_to_bangalore.append(calls[i][1])
+
+
+percentage = (len(bangalore_to_bangalore) / len(from_bangalore)) * 100
+percentage = round(percentage, 2)
+print(f"{percentage} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
 
