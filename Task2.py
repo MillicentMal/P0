@@ -25,19 +25,13 @@ calls_dict = {}
 for i in range(len(calls)):
     if calls[i][0] in calls_dict:
         calls_dict[calls[i][0]] += int(calls[i][3])
-    elif calls[i][1] in calls_dict:
+    if calls[i][1] in calls_dict:
         calls_dict[calls[i][1]] += int(calls[i][3])
-    elif calls[i][0] not in calls_dict:
+    if calls[i][0] not in calls_dict:
         calls_dict[calls[i][0]] = int(calls[i][3])
-    elif calls[i][1] not in calls_dict:
+    if calls[i][1] not in calls_dict:
         calls_dict[calls[i][1]] = int(calls[i][3])
 
 max_value = max(calls_dict, key=calls_dict.get)
-
-print(len(calls_dict))
-print(max_value, calls_dict[max_value])
-
-
-
 
 print(max_value + " spent the longest time, " + str(calls_dict[max_value])  + " seconds on the phone during September 2016.")    

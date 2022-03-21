@@ -64,8 +64,9 @@ for i in range(len(calls)):
       area_code.append("140")  # Not seeing telemarketers code in the set. Most probably because they do not receive calls
 
 print("The numbers called by people in Bangalore have codes: ")
-print(set(area_code))
-# print(set(area_code))
+for code in sorted(set(area_code)):
+  print(code)
+
 
 
 # PART B
